@@ -1,29 +1,39 @@
-let navbar = document.querySelector('.navbar');
+// script.js
 
-document.querySelector('#menu-btn').onclick = () =>{
-    navbar.classList.toggle('active');
-    searchForm.classList.remove('active');
-    cartItem.classList.remove('active');
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const searchBtn = document.getElementById('search-btn');
+    const cartBtn = document.getElementById('cart-btn');
+    const menuBtn = document.getElementById('menu-btn');
+    const searchForm = document.querySelector('.search-form');
+    const cartItemsContainer = document.querySelector('.cart-items-container');
+    const sideMenu = document.getElementById('side-menu');
+    const closeBtn = document.getElementById('close-btn');
 
-let searchForm = document.querySelector('.search-form');
+    searchBtn.addEventListener('click', () => {
+        searchForm.classList.toggle('active');
+        cartItemsContainer.classList.remove('active');
+        sideMenu.classList.remove('active');
+    });
 
-document.querySelector('#search-btn').onclick = () =>{
-    searchForm.classList.toggle('active');
-    navbar.classList.remove('active');
-    cartItem.classList.remove('active');
-}
+    cartBtn.addEventListener('click', () => {
+        cartItemsContainer.classList.toggle('active');
+        searchForm.classList.remove('active');
+        sideMenu.classList.remove('active');
+    });
 
-let cartItem = document.querySelector('.cart-items-container');
+    menuBtn.addEventListener('click', () => {
+        sideMenu.classList.toggle('active');
+        searchForm.classList.remove('active');
+        cartItemsContainer.classList.remove('active');
+    });
 
-document.querySelector('#cart-btn').onclick = () =>{
-    cartItem.classList.toggle('active');
-    navbar.classList.remove('active');
-    searchForm.classList.remove('active');
-}
+    closeBtn.addEventListener('click', () => {
+        sideMenu.classList.remove('active');
+    });
 
-window.onscroll = () =>{
-    navbar.classList.remove('active');
-    searchForm.classList.remove('active');
-    cartItem.classList.remove('active');
-}
+    window.addEventListener('scroll', () => {
+        searchForm.classList.remove('active');
+        cartItemsContainer.classList.remove('active');
+        sideMenu.classList.remove('active');
+    });
+});
